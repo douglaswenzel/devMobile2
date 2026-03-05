@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Button, ActivityIndicator, TextInput } from 'react-native';
 
 export default function App() {
 
@@ -20,7 +20,7 @@ export default function App() {
       })
       .catch(error => console.log(error));
 
-      setLoading(false);
+    setLoading(false);
   };
 
 
@@ -33,15 +33,21 @@ export default function App() {
         onPress={() => buscaCep('18080000')}
       />
 
-      { loading && <ActivityIndicator size="large" /> }
+      <TextInput
+        value={cep.logradouro}
+        onChangeText={text => setCep({ ...cep, logradouro: text})}
+        style={ {height: 40, borderColor: 'gray', borderWidth: 1} }
+      />
 
-      { cep != null && (
-      <View>
-        <Text> Rua: {cep.logradouro} </Text>
-        <Text> Bairro: {cep.bairro}</Text>
-        <Text> Cidade: {cep.cidade} </Text>
-        <Text> Estado: {cep.uf} </Text>
-      </View>)
+      {loading && <ActivityIndicator size="large" />}
+
+      {cep != null && (
+        <View>
+          <Text> Rua: {cep.logradouro} </Text>
+          <Text> Bairro: {cep.bairro}</Text>
+          <Text> Cidade: {cep.cidade} </Text>
+          <Text> Estado: {cep.uf} </Text>
+        </View>)
       }
 
     </View>

@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
 
 export default function App() {
 
   const [cep, setCep] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   const buscaCep = async (X) => {
     let url = `https://viacep.com.br/ws/${X}/json`;
+    setLoading(true);
     await fetch(url)
       .then(resp => resp.json())
       .then(data => {
@@ -16,6 +19,8 @@ export default function App() {
         console.log("-----" + data.ddd);
       })
       .catch(error => console.log(error));
+
+      setLoading(false);
   };
 
 
@@ -27,6 +32,8 @@ export default function App() {
         title=" Cep "
         onPress={() => buscaCep('18080000')}
       />
+
+      { loading && <ActivityIndicator size="large" /> }
 
       { cep != null && (
       <View>

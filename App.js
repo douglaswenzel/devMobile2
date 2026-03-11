@@ -1,19 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FormAPI from './FormAPI';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <FormAPI />
-    </View>
+    <SafeAreaProvider>
+      <PaperProvider>
+        <FormAPI />
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

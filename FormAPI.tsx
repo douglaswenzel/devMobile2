@@ -23,6 +23,10 @@ const FormAPI = () => {
   const [erro, setErro] = React.useState(false);
   const [menuAberto, setMenuAberto] = React.useState(false);
 
+  const atualizarCampo = (campo: string, valor: string) => {
+    setFormData(prev => ({ ...prev, [campo]: valor }));
+  };
+
   return (
     <TextInput
       mode="outlined"

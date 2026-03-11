@@ -18,6 +18,11 @@ const FormAPI = () => {
     'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
   ];
 
+  const [loading, setLoading] = React.useState(false);
+  const [expandido, setExpandido] = React.useState(false);
+  const [erro, setErro] = React.useState(false);
+  const [menuAberto, setMenuAberto] = React.useState(false);
+
   return (
     <TextInput
       mode="outlined"

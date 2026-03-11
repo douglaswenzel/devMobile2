@@ -27,6 +27,19 @@ const FormAPI = () => {
     setFormData(prev => ({ ...prev, [campo]: valor }));
   };
 
+  const buscarDados = async () => {
+    const cepNumerico = formData.cep.replace(/\D/g, '');
+
+    if (cepNumerico.length !== 8) {
+      setErro(true);
+      return;
+    }
+
+    setLoading(true);
+    setErro(false);
+
+  }
+
   return (
     <TextInput
       mode="outlined"

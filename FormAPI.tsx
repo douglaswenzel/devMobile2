@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { Button, HelperText, TextInput } from 'react-native-paper';
 
 const FormAPI = () => {
   const [formData, setFormData] = React.useState({
@@ -66,12 +66,28 @@ const FormAPI = () => {
     <ScrollView contentContainerStyle={{ padding: 16 }}>
       <TextInput
         mode="outlined"
-        label="CEP"
+        label="Digite o seu CEP"
         placeholder="00000-000"
         value={formData.cep}
-        onChangeText={(text) => setFormData({...formData, cep: text})}
+        onChangeText={(v) => atualizarCampo('cep', v)}
         right={<TextInput.Affix text="/8" />}
+        error={erro}
+        keyboardType='numeric'
+        style={{ marginBottom: 10 }}
       />
+
+      {erro && <HelperText type="error">CEP inválido. Insira um CEP existente! </HelperText>}
+
+      {!expandido && (
+        <Button 
+          mode="contained" 
+          onPress={buscarDados} 
+          loading={loading}
+          style={{ paddingVertical: 5 }}
+        >
+          {loading ? 'Buscando...' : 'Verificar Endereço'}
+        </Button>
+      )}
     </ScrollView>
 
   );

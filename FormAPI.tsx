@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Button, HelperText, TextInput } from 'react-native-paper';
 
 const FormAPI = () => {
@@ -87,6 +87,16 @@ const FormAPI = () => {
         >
           {loading ? 'Buscando...' : 'Verificar Endereço'}
         </Button>
+      )}
+
+      {expandido && (
+        <View>
+          <TextInput
+            mode="outlined"
+            label="Logradouro"
+            value={formData.logradouro}
+          />
+        </View>
       )}
     </ScrollView>
 

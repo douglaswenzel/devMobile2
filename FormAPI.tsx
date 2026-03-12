@@ -111,6 +111,20 @@ const FormAPI = () => {
             value={formData.complemento}
             onChangeText={ (v) => atualizarCampo('complemento', v) }
           />
+
+          <TextInput
+            mode="outlined"
+            label="Bairro"
+            value={formData.bairro}
+            onChangeText={ (v) => atualizarCampo('bairro', v)}
+          />
+
+          <TextInput
+            mode="outlined"
+            label="Cidade"
+            value={formData.localidade}
+            onChangeText={ (v) => atualizarCampo('localidade', v)}
+          />
           
         </View>
       )}

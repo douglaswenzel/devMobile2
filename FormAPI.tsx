@@ -1,6 +1,7 @@
+import { Picker } from '@react-native-picker/picker';
 import * as React from 'react';
 import { ScrollView, View } from 'react-native';
-import { Button, HelperText, TextInput as PaperInput } from 'react-native-paper';
+import { Button, HelperText, TextInput as PaperInput, Text } from 'react-native-paper';
 
 const TextInput = PaperInput as any;
 
@@ -127,6 +128,21 @@ const FormAPI = () => {
             value={formData.localidade}
             onChangeText={ (v) => atualizarCampo('localidade', v)}
           />
+
+
+          <View style={{ borderWidth: 1, borderColor: 'black', borderRadius: 1, marginTop: 10, marginBottom: 20 }}>
+            <Text style={{ position: 'absolute', top: -10, left: 10, backgroundColor: '#fff', paddingHorizontal: 5, fontSize: 12, color: '#79747e' }}>
+                Estado (UF)
+            </Text>
+            <Picker
+              selectedValue={formData.uf}
+              onValueChange={(v) => atualizarCampo('uf', v)}
+            >
+              <Picker.Item label="Selecione..." value="" />
+              {ESTADOS_BR.map(uf => <Picker.Item key={uf} label={uf} value={uf} />)}
+            </Picker>
+          </View>
+
           <Button 
             mode="contained" 
             onPress={() => alert('Dados salvos com sucesso!')}

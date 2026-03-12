@@ -125,7 +125,19 @@ const FormAPI = () => {
             value={formData.localidade}
             onChangeText={ (v) => atualizarCampo('localidade', v)}
           />
-          
+          <Button 
+            mode="contained" 
+            onPress={() => alert('Dados salvos com sucesso!')}
+            buttonColor="#2e7d32"
+            icon="check"
+          >
+            Salvar Endereço
+          </Button>
+          <Button
+            onPress={() => {setExpandido(false); atualizarCampo('cep', '');}}
+          >
+            Limpar
+          </Button>
         </View>
       )}
     </ScrollView>

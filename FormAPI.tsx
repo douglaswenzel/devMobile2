@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ScrollView } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 const FormAPI = () => {
@@ -62,14 +63,17 @@ const FormAPI = () => {
   }
 
   return (
-    <TextInput
-      mode="outlined"
-      label="CEP"
-      placeholder="00000-000"
-      value={formData.cep}
-      onChangeText={(text) => setFormData({...formData, cep: text})}
-      right={<TextInput.Affix text="/8" />}
-    />
+    <ScrollView contentContainerStyle={{ padding: 16 }}>
+      <TextInput
+        mode="outlined"
+        label="CEP"
+        placeholder="00000-000"
+        value={formData.cep}
+        onChangeText={(text) => setFormData({...formData, cep: text})}
+        right={<TextInput.Affix text="/8" />}
+      />
+    </ScrollView>
+
   );
 };
 

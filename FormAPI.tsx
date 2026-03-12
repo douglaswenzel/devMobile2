@@ -95,7 +95,23 @@ const FormAPI = () => {
             mode="outlined"
             label="Logradouro"
             value={formData.logradouro}
+            onChangeText={(v) => atualizarCampo('logradouro', v)}
           />
+
+          <TextInput
+            mode="outlined"
+            label="Número"
+            value={formData.numero}
+            onChangeText={(v) => atualizarCampo('numero', v)}
+          />
+
+          <TextInput 
+            mode="outlined"
+            label="Complemento"
+            value={formData.complemento}
+            onChangeText={ (v) => atualizarCampo('complemento', v) }
+          />
+          
         </View>
       )}
     </ScrollView>
